@@ -1,0 +1,35 @@
+datasource db {
+  provider  = "sqlite"
+  url       = "file:./db/dev.db"
+  directUrl = "file:./db/dev.db"
+}
+
+// generator
+generator client {
+  provider             = "prisma-client-py"
+  recursive_type_depth = 5
+}
+
+model Author {
+    id  Int @id @default(autoincrement())
+    name    String
+    email   String @default("test@testing.com")
+    post    Post[]
+}
+
+model Post {
+  id        Int       @id @default(autoincrement())
+  title     String
+  content   String
+  author_id  Int
+  author    Author? @relation(fields: [author_id], references: [id])
+  created_at DateTime  @default(now())
+  comment   Comment[]
+}
+
+model Comment {
+  id      Int    @id @default(autoincrement())
+  message String
+  post_id  Int
+  post    Post?  @relation(fields: [post_id], references: [id])
+}

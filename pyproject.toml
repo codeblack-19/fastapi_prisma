@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "fastapi-prisma"
+version = "0.1.0"
+description = "a simple fastapi project with prisma python client"
+authors = ["Daniel adjei <titha1428@gmail.com>"]
+readme = "README.md"
+packages = [{include = "fastapi_prisma"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.103.1"
+uvicorn = {extras = ["standard"], version = "^0.23.2"}
+prisma = "^0.10.0"
+pydantic = "^2.3.0"
+email-validator = "^2.0.0.post2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
